@@ -28,6 +28,8 @@ while command_value != 'q':
         new_player.go_west()
     elif command_value == 'sr':
         new_player.search_room()
+    elif command_value == 'i':
+        new_player.get_inventory()
     # Print an error message if the movement isn't allowed.
     elif command_value != 'q':
         print('-> Make sure you are entering the right command :)\n\n')

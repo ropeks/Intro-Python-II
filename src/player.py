@@ -12,8 +12,9 @@ room = {
 }
 
 class Player:
-    def __init__(self, room):
+    def __init__(self, room, inventory = []):
         self.room = room
+        self.inventory = inventory
     
     def __str__(self):
         return f'You are currently in room {self.room}'
@@ -70,6 +71,7 @@ class Player:
                         while i != number_of_items:
                             if current_room_items[i].name == command_value:
                                 print(f'-> Picking up {command_value}')
+                                self.inventory.append(current_room_items[i])
                                 current_room_items.pop(i)
                             i += 1
                         print('-> Items left: ')
@@ -81,5 +83,11 @@ class Player:
             print('-> Going back \n\n')
         else:
             print('-> Looks like someone has already looted everything here :( \n\n')
+
+    def get_inventory(self):
+        print('-> Inventory: ')
+        for item in self.inventory:
+            print('  - ' + item.name)
+        print('\n')
 
 
