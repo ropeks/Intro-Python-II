@@ -64,6 +64,7 @@ class Player:
             command_value = ''
             while command_value != 'b':
                 command_value = input("Type item name to pick up the item or 'b' to go back \n<- ")
+                
                 if command_value != 'b':
                     try:
                         i = 0
@@ -80,14 +81,43 @@ class Player:
                         print('\n')
                     except:
                         print('-> Make sure you are passing right command!\n\n')
+            
             print('-> Going back \n\n')
+    
         else:
             print('-> Looks like someone has already looted everything here :( \n\n')
 
     def get_inventory(self):
-        print('-> Inventory: ')
-        for item in self.inventory:
-            print('  - ' + item.name)
-        print('\n')
+        if len(self.inventory) > 0:
+
+            print('-> Inventory: ')
+            for item in self.inventory:
+                print('  - ' + item.name)
+            print('\n')
+
+            command_value = ''
+            while command_value != 'b':
+                command_value = input("Type item name to drop the item or 'b' to go back \n<- ")
+                
+                if command_value != 'b':
+                    # try:
+                        i = 0
+                        number_of_items = len(self.inventory)
+                        while i != number_of_items:
+                            if self.inventory[i].name == command_value:
+                                print(f'-> Dropping {command_value}')
+                                room[self.room].items.append(self.inventory[i])
+                                self.inventory.pop(i)
+                            i += 1
+                        print('-> Inventory: ')
+                        for item in self.inventory:
+                            print('  - ' + item.name)
+                        print('\n')
+                    # except:
+                    #     print('-> Make sure you are passing right command!\n\n')
+            
+            print('-> Going back \n\n')
+        else:
+            print('-> Your inventory is empty.\n\n')
 
 
