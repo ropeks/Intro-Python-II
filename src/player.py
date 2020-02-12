@@ -1,13 +1,13 @@
 from room import Room
-
+from item import Item
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 
 room = {
-    'outside': Room('outside', 'nothing', 'foyer', 'nothing', 'nothing', [{ 'name': 'knife', 'description': 'a dangerous weapon' }]),
-    'narrow': Room('narrow', 'nothing', 'treasure', 'foyer', 'nothing', [{ 'name': 'image', 'description': 'there is a woman on it' }, { 'name': 'bag', 'description': 'just an empty bag..' }]),
+    'outside': Room('outside', 'nothing', 'foyer', 'nothing', 'nothing', [Item('knife', 'a dangerous weapon')]),
+    'narrow': Room('narrow', 'nothing', 'treasure', 'foyer', 'nothing', [ Item('image', 'there is a woman on it'), Item('bag', 'just an empty bag..') ]),
     'foyer': Room('foyer', 'outside', 'overlook', 'nothing', 'narrow', []),
-    'treasure': Room('treasure', 'narrow', 'nothing', 'overlook', 'nothing', [{ 'name': 'treasure', 'description': 'hidden treasure!' }]),
+    'treasure': Room('treasure', 'narrow', 'nothing', 'overlook', 'nothing', [Item('treasure', 'hidden treasure')]),
     'overlook': Room('overlook', 'foyer', 'nothing', 'nothing', 'treasure', [])
 }
 
@@ -57,9 +57,9 @@ class Player:
 
             print('-> Items:')
             for item in current_room_items:
-                print('  - ' + item['name'])
+                print('  - ' + item.name)
             print('\n')
-            
+
             command_value = ''
             while command_value != 'b':
                 command_value = input("Type item name to pick up the item or 'b' to go back \n<- ")
@@ -68,13 +68,13 @@ class Player:
                         i = 0
                         number_of_items = len(current_room_items)
                         while i != number_of_items:
-                            if current_room_items[i]['name'] == command_value:
-                                print(f'-> Picking up {command_value}\n\n')
+                            if current_room_items[i].name == command_value:
+                                print(f'-> Picking up {command_value}')
                                 current_room_items.pop(i)
                             i += 1
                         print('-> Items left: ')
                         for item in current_room_items:
-                            print('  - ' + item['name'])
+                            print('  - ' + item.name)
                         print('\n')
                     except:
                         print('-> Make sure you are passing right command!\n\n')
