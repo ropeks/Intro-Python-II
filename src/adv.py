@@ -18,20 +18,19 @@ while command_value != 'q':
     # * Waits for user input and decides what to do.
     command_value = input('What do you want to do? \n<- ')
     # If the user enters a cardinal direction, attempt to move to the room there.
-    try:
-        if command_value == 'n':
-            new_player.go_north()
-        elif command_value == 's':
-            new_player.go_south()
-        elif command_value == 'e':
-            new_player.go_east()
-        elif command_value == 'w':
-            new_player.go_west()
-        elif command_value == 'sr':
-            new_player.search_room()
+    if command_value == 'n':
+        new_player.go_north()
+    elif command_value == 's':
+        new_player.go_south()
+    elif command_value == 'e':
+        new_player.go_east()
+    elif command_value == 'w':
+        new_player.go_west()
+    elif command_value == 'sr':
+        new_player.search_room()
     # Print an error message if the movement isn't allowed.
-    except ValueError:
-        print('Make sure you are entering right command :)')
+    elif command_value != 'q':
+        print('-> Make sure you are entering the right command :)\n\n')
 # If the user enters "q", quit the game.
-print('-> Sad to see you go :( \n   See you next time :)\n')
+print('-> Sad to see you go :( \n   See you next time :)\n\n')
 
