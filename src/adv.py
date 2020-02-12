@@ -10,7 +10,7 @@ command_value = ''
 
 # * Prints the current description (the textwrap module might be useful here).
 print('\n\n=========\nWelcome to misterious quest! :D \nHappy hunting!!\n=========\n')
-print('Commands: \n n  - go north \n s  - go south \n e  - go east \n w  - go west \n sr - search for items in current room \n q  - quit \n\n')
+print('Commands: \n n  - go north \n s  - go south \n e  - go east \n w  - go west \n sr - search for items in current room \n i  - inventory \n q  - quit \n\n')
 # Write a loop that:
 while command_value != 'q':
     # * Prints the current room name
