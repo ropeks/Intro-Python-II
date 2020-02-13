@@ -104,7 +104,7 @@ class Player:
                         i = 0
                         number_of_items = len(self.inventory)
                         while i != number_of_items:
-                            if self.inventory[i].name == command_value:
+                            if self.inventory[i-1].name == command_value:
                                 print(f'-> Dropping {command_value}')
                                 room[self.room].items.append(self.inventory[i])
                                 self.inventory.pop(i)
